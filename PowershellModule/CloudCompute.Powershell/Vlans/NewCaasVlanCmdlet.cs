@@ -79,9 +79,8 @@ namespace DD.CBU.Compute.Powershell.Mcp20
                         name = Name,
                         description = Description,
                         networkDomainId = NetworkDomainId,
-                        privateIpv4BaseAddress = PrivateIpv4BaseAddress.MapToIPv4().ToString(),
                         privateIpv4PrefixSize = PrivateIpv4PrefixSize,
-                        gatewayAddressing = GatewayAddressing
+                        privateIpv4NetworkAddress = (PrivateIpv4BaseAddress == null ? string.Empty : PrivateIpv4BaseAddress.ToString())
                     }).Result;
                 if (response != null)
                     WriteDebug(
