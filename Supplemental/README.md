@@ -4,15 +4,15 @@ The Supplemental folder contains scripts that provide extra functionality to the
 part of the main Nuget package.
 
 #### ChangeDiskSpeedProvIops.psm1
-This script will install the commandlet *Set-CaasChangeDiskSpeedProvIops*. 
+This script will install the cmdlet *Set-CaasChangeDiskSpeedProvIops*. 
 
-The commandlet changes the speed of a disk to a *different* value. This includes the PROVISIONEDIOPS speed, something
- not supported by the current Set-CaaSServerDiskSpeed commandlet.
+The cmdlet changes the speed of a disk to a *different* value. This includes the PROVISIONEDIOPS speed, something
+ not supported by the current Set-CaaSServerDiskSpeed Cmdlet.
 
-Please note, the commandlet requests that the disk speed is changed. This function is asynchronous, completion of the 
-commandlet does not indicate the disk speed has changed, or will be successful.
+Please note, the cmdlet requests that the disk speed is changed. This function is asynchronous, completion of the 
+cmdlet does not indicate the disk speed has changed, or will be successful.
 
-The API used within the commandlet is *https://$ApiPath/caas/2.12/$orgId/server/changeDiskSpeed* and all the rules and
+The API used within the cmdlet is *https://$ApiPath/caas/2.12/$orgId/server/changeDiskSpeed* and all the rules and
 restrictions imposed by that API apply to this module.
 
 ##### Installing
@@ -24,8 +24,8 @@ If the module is already installed use the -force flag to update it:
 
 `Import-Module .\ChangeDiskSpeedProvIops.psm1 -force`
 
-##### Running Commandlet
-The commandlet can be run on the Powershell command line, and accepts the following parameters:
+##### Running Cmdlet
+The cmdlet can be run on the Powershell command line, and accepts the following parameters:
 
 -apiUrl - Mandatory parameter stating path of the API to use
 
@@ -46,5 +46,7 @@ Valid settings for the *speed* parameter are one of ECONOMY, STANDARD, HIGHPERFO
 If the speed is set to PROVISIONEDIOPS then the *-iops* parameter must be specified.
 
 ##### Passing Credentials
-Credentials passed in the -cred parameter are obtained using the `Get-Credential` Powershell commandlet. 
+Credentials passed in the -cred parameter are obtained using the `Get-Credential` Powershell cmdlet. 
 The object returned by `Get-Credential` can be passed using the -cred parameter.
+
+*Please note this Cmdlet and related script are valid as of API v2.12.*
