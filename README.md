@@ -17,6 +17,13 @@ Usage
 Usage examples are shown on the automation blog for the PowerShell. http://caas-automation.blogspot.com.au/ 
 
 
+Supplemental Modules
+--------------------
+A folder containing Supplemental Modules is also provided. These modules contain features in addition
+to those provided by the main package. A [README](./Supplemental/README.md) has been provided in that
+folder detailing the available modules. 
+
+
 Terms
 ------------
 This library has been provided as a utility for clients wishing to integrate the CaaS API into any .NET services, it does not form part of a service provided by Dimension Data.

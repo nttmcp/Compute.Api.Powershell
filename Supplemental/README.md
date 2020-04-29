@@ -6,7 +6,7 @@ part of the main Nuget package.
 #### ChangeDiskSpeedProvIops.psm1
 This script will install the cmdlet *Set-CaasChangeDiskSpeedProvIops*. 
 
-The cmdlet changes the speed of a disk to a *different* value. This includes the PROVISIONEDIOPS speed, something
+The cmdlet changes the speed of a disk to a __different__ value. This includes the PROVISIONEDIOPS speed, something
  not supported by the current Set-CaaSServerDiskSpeed Cmdlet.
 
 Please note, the cmdlet requests that the disk speed is changed. This function is asynchronous, completion of the 
@@ -40,6 +40,25 @@ The cmdlet can be run on the Powershell command line, and accepts the following 
 -iops - If the speed is set to PROVISIONEDIOPS this parameter must be specified to an integer for the number of iops
 
 
+##### Example Run
+In this example we're changing a disk to STANDARD speed. Credentials are first obtained and then passed into the script.
+During the run the script outputs the payload sent to the API. Finally the $? command can be used to determine if the
+script succeeded (which it did in this case).
+
+`$cred = Get-Credential`
+
+`PS C:\pscripts\release> Set-CaasChangeDiskSpeedProvIops -apiPath api-ash99-dev.mcp-services.net -orgId a32ef0e8-d9aa-4e86-b617-d03673a031a3 -diskId d526e557-5822-43b3-8a30-8339629bc1c8 -speed STANDARD -cred $cred`
+
+Changing Disk speed: Payload:
+{
+        "id" : "d526e557-5822-43b3-8a30-8339629bc1c8",
+        "speed": "STANDARD"
+        }
+
+`PS C:\pscripts\release> $?`
+True
+
+
 ###### Valid Disk Speed Settings
 Valid settings for the *speed* parameter are one of ECONOMY, STANDARD, HIGHPERFORMANCE, PROVISIONEDIOPS
 
@@ -49,4 +68,4 @@ If the speed is set to PROVISIONEDIOPS then the *-iops* parameter must be specif
 Credentials passed in the -cred parameter are obtained using the `Get-Credential` Powershell cmdlet. 
 The object returned by `Get-Credential` can be passed using the -cred parameter.
 
-*Please note this Cmdlet and related script are valid as of API v2.12.*
+*Please note this cmdlet and related script are valid as of API v2.12.*
