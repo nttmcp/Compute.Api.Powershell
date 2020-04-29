@@ -1,5 +1,5 @@
 ﻿
-Function Set-CaaSChangeDiskSpeedProvIops
+Function Set-CaasChangeDiskSpeedProvIops
 {
 [CmdletBinding()]
 Param (
